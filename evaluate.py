@@ -24,7 +24,7 @@ def best_threshold_for_fbeta(probs, targets, beta):
 	return thresholds[best_index]
 
 if __name__ == '__main__':
-	data_path = "data/validation_dataset.pt"
+	data_path = "data/train_dataset.pt"
 	model_path = "tests/conv1.pt"
 	beta = 3
 
