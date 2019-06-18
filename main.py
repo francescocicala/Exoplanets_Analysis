@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from exoplanets_analysis.process_data import ExoplanetDataset
+from process_data import ExoplanetDataset
 from exoplanets_analysis.initialize_model import init_model
 from exoplanets_analysis.train import train_step
 print("modules imported!\n")
@@ -11,6 +11,7 @@ print("modules imported!\n")
 if __name__ == '__main__':
 	moving_average = 50
 	batch_size = 32
+	dataset_path = "data/train_dataset.pt"
 	model_path = "tests/conv1.pt"
 	model_type = 'simple_conv'
 
@@ -19,7 +20,7 @@ if __name__ == '__main__':
 
 
 	### GENERATE TRAIN DATASET ###
-	train_dataset = torch.load("data/train_dataset.pt")
+	train_dataset = torch.load(dataset_path)
 
 	kwargs = {'num_workers': 1, 'pin_memory': True} if torch.cuda.is_available() else {}
 	trainloader = DataLoader(train_dataset, batch_size, shuffle=True, **kwargs)

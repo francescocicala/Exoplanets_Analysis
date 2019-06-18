@@ -3,7 +3,7 @@ import torch
 import torch.nn.functional as F
 from sklearn.metrics import fbeta_score
 from models.simple_convolutional import Simple_Convolutional
-from exoplanets_analysis.process_data import ExoplanetDataset
+from process_data import ExoplanetDataset
 
 def get_probabilities(model, X):
     return F.softmax(model(X), dim=1).detach().numpy()[:, 0]
